@@ -1,0 +1,22 @@
+VimPEG Parser for CSV
+---------------------
+
+_alpha, demo_
+
+This is a demonstration of the VimPEG PEG parser generator library.
+
+It provides the following rudimentary CSV operations:
+
+* `CSV_Parse()` for parsing a range of CSV lines in the current buffer
+  and returning the data as an array of arrays.
+* `CSV_Print()` for printing an array of arrays as CSV data to the
+  current buffer.
+* Displaying the current CSV column in the statusbar. A standalone
+  function, `CSV_Column()` is also provided for those who find the
+  statusbar _feature_ too cumbersome (it is a bit of a process hog).
+
+NOTE: To disable the automatic includion of the column information in
+your `statusline`, add the following line to your `~/.vimrc`:
+
+  let g:vimpeg_parser_csv_statusline = 0
+
