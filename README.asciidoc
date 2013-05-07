@@ -3,7 +3,8 @@ VimPEG Parser for CSV
 
 _alpha, demo_
 
-This is a demonstration of the VimPEG PEG parser generator library.
+This is a demonstration of the VimPEG PEG parser generator library. As
+such, this plugin depends on https://github.com/dahu/Vimpeg[]
 
 It provides the following rudimentary CSV operations:
 
