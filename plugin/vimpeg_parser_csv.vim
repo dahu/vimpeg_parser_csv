@@ -9,6 +9,7 @@
 
 let g:vimpeg_parser_csv_version = '0.1'
 
+
 " Vimscript Setup: {{{1
 " Allow use of line continuation.
 let s:save_cpo = &cpo
@@ -19,6 +20,8 @@ if !exists('g:vimpeg_parser_csv_statusline')
   let g:vimpeg_parser_csv_statusline = 1
 endif
 
+let g:vimpeg_parser_csv_separator = get(g:, 'vimpeg_parser_csv_separator', ',')
+
 " Public Interface: {{{1
 function! CSV_Column()
   let col = col('.') - 2
@@ -26,6 +29,9 @@ function! CSV_Column()
     return 1
   endif
   let col = col < 0 ? 0 : col
+  if col == 0
+    return 1
+  endif
   let data = getline('.')[0:col]
   if data =~ '^\s*$'
     return 1
@@ -51,11 +57,19 @@ function! CSV_Parse(fline, lline)
   return g:csv#parser.match(join(lines, "\n"))['value']
 endfunction
 
-function! CSV_Print(records)
+function! CSV_Print(records, separator)
   for rec in a:records
-    call append(line('.')-1, join(rec, ", "))
+    call append(line('.')-1, join(rec, a:separator))
   endfor
 endfunction
+
+function! CSV_Separator(sep)
+  let g:vimpeg_parser_csv_separator = a:sep
+  call csv#generate_parser()
+endfunction
+
+call csv#generate_parser()
+
 
 " Teardown:{{{1
 "reset &cpo back to users setting

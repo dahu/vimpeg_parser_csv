@@ -16,7 +16,7 @@ It provides the following rudimentary CSV operations:
   function, `CSV_Column()` is also provided for those who find the
   statusbar _feature_ too cumbersome (it is a bit of a process hog).
 
-NOTE: To disable the automatic includion of the column information in
+NOTE: To disable the automatic inclusion of the column information in
 your `statusline`, add the following line to your `~/.vimrc`:
 
   let g:vimpeg_parser_csv_statusline = 0

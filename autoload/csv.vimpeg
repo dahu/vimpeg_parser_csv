@@ -10,7 +10,7 @@
 .root_element = 'file'
 
 file         ::=  record (newline record)* eof  -> #file
-record       ::=  (q_field | uq_field) ( s* comma (q_field | uq_field))*  ->  #record
+record       ::=  (q_field | uq_field) (s* comma (q_field | uq_field))*  ->  #record
 q_field      ::=  s* dq ( (char | comma | dqdq | newline))* dq  -> #q_field
 uq_field     ::=  s* char*  -> #uq_field
 char         ::=  !(newline | dq | s* comma) '.'  -> #char
